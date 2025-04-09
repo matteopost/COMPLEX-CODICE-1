@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Celsia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Jacquard 24', cursive;
+    }
+    .fade-in {
+      animation: fadeIn 1.5s ease forwards;
+    }
+    .fade-out {
+      animation: fadeOut 1.5s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1 }
+      to { opacity: 0 }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Orientation Warning -->
+  <div id="orientation-warning" class="fixed inset-0 bg-[#eddfb8] text-[#262113] flex items-center justify-center text-center px-6 sm:hidden">
+    <p class="text-xl">Please use a phone in <strong>landscape</strong> mode to play Celsia.</p>
+  </div>
+
+  <!-- Splash Screen -->
+  <div id="splash" class="hidden landscape:flex flex-col justify-center items-center min-h-screen bg-[#eddfb8] text-[#262113] p-10">
+    <div class="w-full grid grid-cols-3 gap-4" style="margin: 40px;">
+      <div class="col-span-3 text-center">
+        <h1 class="text-6xl mb-6">Celsia</h1>
+        <button id="startBtn" class="text-2xl hover:opacity-50 transition-opacity active:opacity-50">Tap to Start</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game" class="hidden landscape:flex flex-col min-h-screen bg-[#262113] text-[#eddfb8] p-10">
+    <div class="w-full grid grid-cols-3 gap-4" style="margin: 40px;">
+      <div id="revealText" class="col-span-3 text-center text-4xl opacity-0">Character Reveal</div>
+      <div id="charImage" class="col-span-1 opacity-0">
+        <img src="/img/selene.png" alt="selene.png" class="w-full h-auto" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const splash = document.getElementById('splash');
+    const game = document.getElementById('game');
+    const orientationWarning = document.getElementById('orientation-warning');
+    const startBtn = document.getElementById('startBtn');
+    const revealText = document.getElementById('revealText');
+    const charImage = document.getElementById('charImage');
+
+    function checkOrientation() {
+      if (window.innerWidth > window.innerHeight) {
+        orientationWarning.style.display = 'none';
+        splash.classList.remove('hidden');
+      } else {
+        orientationWarning.style.display = 'flex';
+        splash.classList.add('hidden');
+        game.classList.add('hidden');
+      }
+    }
+
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('load', checkOrientation);
+
+    startBtn.addEventListener('click', () => {
+      splash.classList.add('hidden');
+      game.classList.remove('hidden');
+
+      revealText.classList.add('fade-in');
+      setTimeout(() => {
+        revealText.classList.remove('fade-in');
+        revealText.classList.add('fade-out');
+      }, 2000);
+
+      setTimeout(() => {
+        charImage.classList.add('fade-in');
+      }, 4000);
+    });
+  </script>
+</body>
+</html>
