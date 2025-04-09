@@ -29,12 +29,12 @@
 </head>
 <body class="antialiased">
 
-  <!-- Orientation Warning -->
-  <div id="orientation-warning" class="fixed inset-0 bg-[#eddfb8] text-[#262113] flex items-center justify-center text-center px-6 sm:hidden">
+
+  <h1>ciao</h1>
+  <!-- <div id="orientation-warning" class="fixed inset-0 bg-[#eddfb8] text-[#262113] flex items-center justify-center text-center px-6 sm:hidden">
     <p class="text-xl">Please use a phone in <strong>landscape</strong> mode to play Celsia.</p>
   </div>
 
-  <!-- Splash Screen -->
   <div id="splash" class="hidden landscape:flex flex-col justify-center items-center min-h-screen bg-[#eddfb8] text-[#262113] p-10">
     <div class="w-full grid grid-cols-3 gap-4" style="margin: 40px;">
       <div class="col-span-3 text-center">
@@ -44,54 +44,57 @@
     </div>
   </div>
 
-  <!-- Game Screen -->
   <div id="game" class="hidden landscape:flex flex-col min-h-screen bg-[#262113] text-[#eddfb8] p-10">
     <div class="w-full grid grid-cols-3 gap-4" style="margin: 40px;">
       <div id="revealText" class="col-span-3 text-center text-4xl opacity-0">Character Reveal</div>
       <div id="charImage" class="col-span-1 opacity-0">
         <img src="/img/selene.png" alt="selene.png" class="w-full h-auto" />
 
-        
+
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <script>
-    const splash = document.getElementById('splash');
-    const game = document.getElementById('game');
-    const orientationWarning = document.getElementById('orientation-warning');
-    const startBtn = document.getElementById('startBtn');
-    const revealText = document.getElementById('revealText');
-    const charImage = document.getElementById('charImage');
 
-    function checkOrientation() {
-      if (window.innerWidth > window.innerHeight) {
-        orientationWarning.style.display = 'none';
-        splash.classList.remove('hidden');
-      } else {
-        orientationWarning.style.display = 'flex';
-        splash.classList.add('hidden');
-        game.classList.add('hidden');
-      }
-    }
-
-    window.addEventListener('resize', checkOrientation);
-    window.addEventListener('load', checkOrientation);
-
-    startBtn.addEventListener('click', () => {
-      splash.classList.add('hidden');
-      game.classList.remove('hidden');
-
-      revealText.classList.add('fade-in');
-      setTimeout(() => {
-        revealText.classList.remove('fade-in');
-        revealText.classList.add('fade-out');
-      }, 2000);
-
-      setTimeout(() => {
-        charImage.classList.add('fade-in');
-      }, 4000);
-    });
-  </script>
 </body>
+
+<script>
+  const splash = document.getElementById('splash');
+  const game = document.getElementById('game');
+  const orientationWarning = document.getElementById('orientation-warning');
+  const startBtn = document.getElementById('startBtn');
+  const revealText = document.getElementById('revealText');
+  const charImage = document.getElementById('charImage');
+
+  function checkOrientation() {
+    if (window.innerWidth > window.innerHeight) {
+      orientationWarning.style.display = 'none';
+      splash.classList.remove('hidden');
+    } else {
+      orientationWarning.style.display = 'flex';
+      splash.classList.add('hidden');
+      game.classList.add('hidden');
+    }
+  }
+
+  window.addEventListener('resize', checkOrientation);
+  window.addEventListener('load', checkOrientation);
+
+  startBtn.addEventListener('click', () => {
+    splash.classList.add('hidden');
+    game.classList.remove('hidden');
+
+    revealText.classList.add('fade-in');
+    setTimeout(() => {
+      revealText.classList.remove('fade-in');
+      revealText.classList.add('fade-out');
+    }, 2000);
+
+    setTimeout(() => {
+      charImage.classList.add('fade-in');
+    }, 4000);
+  });
+</script>
+
+
 </html>
