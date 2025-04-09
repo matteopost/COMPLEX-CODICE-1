@@ -1,12 +1,24 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="antialiased">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Celsia</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg': '#eddfb8',
+            'bg-dark': '#262113',
+          }
+        }
+      }
+    };
+  </script>
   <style>
     body {
       font-family: 'Jacquard 24', cursive;
@@ -27,16 +39,15 @@
     }
   </style>
 </head>
-<body class="antialiased">
+<body class="p-6">
 
 
-  <h1>ciao</h1>
-  <!-- <div id="orientation-warning" class="fixed inset-0 bg-[#eddfb8] text-[#262113] flex items-center justify-center text-center px-6 sm:hidden">
+  <div id="orientation-warning" class="fixed inset-0 bg-bg-dark text-bg flex items-center justify-center text-center px-6 sm:hidden">
     <p class="text-xl">Please use a phone in <strong>landscape</strong> mode to play Celsia.</p>
   </div>
 
-  <div id="splash" class="hidden landscape:flex flex-col justify-center items-center min-h-screen bg-[#eddfb8] text-[#262113] p-10">
-    <div class="w-full grid grid-cols-3 gap-4" style="margin: 40px;">
+  <div id="splash" class="hidden landscape:flex flex-col justify-center items-center min-h-screen bg-bg text-bg-dark p-10">
+    <div class="w-full grid grid-cols-3 gap-4">
       <div class="col-span-3 text-center">
         <h1 class="text-6xl mb-6">Celsia</h1>
         <button id="startBtn" class="text-2xl hover:opacity-50 transition-opacity active:opacity-50">Tap to Start</button>
@@ -44,16 +55,14 @@
     </div>
   </div>
 
-  <div id="game" class="hidden landscape:flex flex-col min-h-screen bg-[#262113] text-[#eddfb8] p-10">
-    <div class="w-full grid grid-cols-3 gap-4" style="margin: 40px;">
+  <div id="game" class="hidden landscape:flex flex-col min-h-screen bg-bg-dark text-bg p-10">
+    <div class="w-full grid grid-cols-3 gap-4">
       <div id="revealText" class="col-span-3 text-center text-4xl opacity-0">Character Reveal</div>
       <div id="charImage" class="col-span-1 opacity-0">
         <img src="/img/selene.png" alt="selene.png" class="w-full h-auto" />
-
-
       </div>
     </div>
-  </div> -->
+  </div>
 
 
 </body>
